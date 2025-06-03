@@ -1,7 +1,7 @@
 import random # to enable shuffling
 import time # to enable the timer
 
-# Quiz data categorized by topics
+# Quiz data categorized by topics, loading of questions
 quiz_data = {
     "General Knowledge": [
         {
@@ -52,10 +52,10 @@ quiz_data = {
 def quiz_game():
     print("Quiz Game")
     print("Choose a category:")
-    categories = list(quiz_data.keys())
+    categories = list(quiz_data.keys()) # list the objects according to their keys, ex: "How many dots appear on a pair of dice?" is the object and "questions" is the key
 
-    for idx, cat in enumerate(categories, start=1):
-        print(f"{idx}. {cat}")
+    for idx, cat in enumerate(categories, start=1): # 'enumerate' takes a tuple and returns it as an enumerate object, add a counter as the key of the enumerate object ex: 'start=1'
+        print(f"{idx}. {cat}") # 'idx' searches fo rvector elements identical to the text you specify
 
     while True:
         try:
@@ -105,11 +105,11 @@ def quiz_game():
 
     percentage = (score / total) * 100
     if percentage == 100:
-        print("🎉 Excellent! You got everything right!")
+        print("🥳 Excellent! You got everything right!")
     elif percentage >= 60:
-        print("👍 Good job!")
+        print("😊 Good job!")
     else:
-        print("😕 Try again. Practice makes perfect!")
+        print("😞 Try again. Practice makes perfect!")
 
 # Run the quiz
 quiz_game()
