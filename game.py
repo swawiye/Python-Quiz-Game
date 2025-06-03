@@ -55,7 +55,7 @@ def quiz_game():
     categories = list(quiz_data.keys()) # list the objects according to their keys, ex: "How many dots appear on a pair of dice?" is the object and "questions" is the key
 
     for idx, cat in enumerate(categories, start=1): # 'enumerate' takes a tuple and returns it as an enumerate object, add a counter as the key of the enumerate object ex: 'start=1'
-        print(f"{idx}. {cat}") # 'idx' searches fo rvector elements identical to the text you specify
+        print(f"{idx}. {cat}") # 'idx' searches for vector elements identical to the text you specify
 
     while True:
         try:
@@ -71,8 +71,8 @@ def quiz_game():
     random.shuffle(questions)
 
     score = 0
-    print(f"\nStarting quiz on: {selected_category}")
-    print("You have 10 seconds to answer each question!\n")
+    print(f"\nStarting quiz on: {selected_category}!")
+    print("You have 10 seconds to answer each question\n")
 
     for i, item in enumerate(questions):
         print(f"Question {i + 1}: {item['question']}")
@@ -81,23 +81,23 @@ def quiz_game():
 
         start_time = time.time()
         try:
-            user_input = input("Your answer (A, B, C, or D): ").strip().upper()
+            user_input = input("Your answer (A, B, C, or D): ").strip().upper() # '.strip()' removes whitespaces
             if time.time() - start_time > 10:
                 raise TimeoutError
             if user_input not in ['A', 'B', 'C', 'D']:
                 raise ValueError("Invalid choice.")
         except TimeoutError:
             print("⏰ Time's up! Moving to the next question.\n")
-            continue
-        except ValueError as e:
-            print(f"{e} Skipping this question.\n")
-            continue
+            continue # ends the current loop
+        #except ValueError as e:
+        #    print(f"{e} Skipping this question.\n")
+        #    continue
 
         if user_input == item["correct"]:
             print("✅ Correct!\n")
             score += 1
         else:
-            print(f"❌ Incorrect! The correct answer was {item['correct']}.\n")
+            print(f"❌ Incorrect! The correct answer is {item['correct']}.\n")
 
     total = len(questions)
     print("Quiz Completed :)")
